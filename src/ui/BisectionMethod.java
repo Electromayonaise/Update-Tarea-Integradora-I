@@ -60,9 +60,9 @@ public class BisectionMethod {
         }
 
         print("Enter the left endpoint of the interval: ");
-        double a = input.nextDouble();
+        Double a=  validateIntervalValue(); // method to validate the input of the interval
         print("Enter the right endpoint of the interval: ");
-        double b = input.nextDouble();
+        Double b= validateIntervalValue(); // method to validate the input of the interval
         // method to find the value of the chosen function at the given interval
         double fa = function(desirednum, a, variableValue, constant, power);
         double fb = function(desirednum, b, variableValue, constant, power);
@@ -187,6 +187,18 @@ public class BisectionMethod {
             return (x * cos(x, variableValue));
         }
         return 0.0;
+    }
+
+    /*
+     * method to validate the input of the interval, if the input is not a double it will ask for a new input 
+     */
+    private static Double validateIntervalValue(){
+        while (!input.hasNextDouble()) {
+            print("Invalid input, please enter a number");
+            input.next();
+        }
+        return input.nextDouble();
+        
     }
     // Example1: Choose the first function, enter the interval [1,2], the program will output "the root of the function within the given interval is: 1.2533141372841783"
     // Example2: Choose the second function, enter the interval [1,2], the program will output "no root in this interval"
